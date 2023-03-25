@@ -1,3 +1,3 @@
 import { servidor } from "./servidor/servidor";
 
-servidor.listen(3000, () => console.log('SERVIDOR INICIADO!'));
+servidor.listen(process.env.PORTA || 3000, () => console.log('SERVIDOR INICIADO!'));

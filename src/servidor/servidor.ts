@@ -1,13 +1,11 @@
+import 'dotenv/config';
 import express from 'express';
+import { rota } from './rotas/rotas';
 
 const servidor = express();
 
+servidor.use(express.json());
 
-servidor.get('/', (req, res) => {
-
-    return res.send('Hello World!');
-
-});
-
+servidor.use(rota);
 
 export { servidor };
