@@ -28,14 +28,28 @@ class ProdutoController {
     }
 
     public async getEstoque(req, res) {
+
         const listaProdutos = await produtoService.getEstoque();    
-        return res.json(listaProdutos);
+
+        if (listaProdutos) {
+            return res.json(listaProdutos);
+        } else {
+            return res.send('ERRO AO ABRIR ARQUIVO');
+        }
+        
     }
 
     public async getSomaReduce(req, res) {
 
-        return res.json(await produtoService.getSomaReduce);
+        const somaEstoque = await produtoService.getSomaReduce();
 
+        if (somaEstoque) {
+            return res.send(`SOMA DOS VALORES DO ESTOQUE: ${somaEstoque}`);
+        } else {
+            return res.send('ERRO AO ABRIR ARQUIVO!');
+        }
+
+        //return res.json(somaEstoque);
     }
 }
 
